@@ -89,8 +89,8 @@
 			let myReturn = "";
 
 			myReturn += `<p>
-             <img src="images/${coffee.pic}" alt="Our Pumpkin Spice Latte tastes great on a Fall Day!" id="coffee" />
-            <strong>Monday's Coffee Special:</strong> Monday's daily coffee special is <strong>Pumpkin Spice Latte</strong>, which makes us wish it was always Fall, as this is one of our top sellers!
+             <img src="images/${coffee.pic}" alt="${coffee.alt}" id="coffee" />
+            <strong>${coffee.weekday}'s Coffee Special:</strong> ${coffee.weekday}'s daily coffee special is <strong>${coffee.coffee}</strong>, ${coffee.description}
             </p>`;
 			return myReturn;
 		}
@@ -103,7 +103,7 @@
 		let coffee ="";
 		
 		//TEST ONLY
-		//today = 0;
+		//today = 4;
 
 		switch(today){
 			case 0: 
@@ -135,7 +135,7 @@
 				coffee = {
 			pic: "caramel-latte.jpg",
 			alt: "Caramel Latte",
-			color: "caramel",
+			color: "gold",
 			description: `Caramel Lattes are classic!`,
 			coffee: "Caramel Latte",
 			weekday: "Tuesday"
@@ -197,6 +197,7 @@
 
 		document.getElementById ("coffeeTarget").innerHTML = coffeeTemplate(coffee);
 
+		document.querySelector("html").style.backgroundColor = coffee.color;
 		
 		console.log(today);
 
