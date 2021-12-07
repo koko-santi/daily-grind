@@ -58,6 +58,16 @@
             <strong>Monday's Coffee Special:</strong> Monday's daily coffee special is <strong>Pumpkin Spice Latte</strong>, which makes us wish it was always Fall, as this is one of our top sellers!
 			</p>
 		-->
+		<p>Click below to view the coffee specials for different days of the week!</p>
+		<p><a href ="?day=0">Sunday</a></p>
+		<p><a href ="?day=1">Monday</a></p>
+		<p><a href ="?day=2">Tuesday</a></p>
+		<p><a href ="?day=3">Wednesday</a></p>
+		<p><a href ="?day=4">Thursday</a></p>
+		<p><a href ="?day=5">Friday</a></p>
+		<p><a href ="?day=6">Saturday</a></p>
+	
+		
      </main>
     <footer>
       <small>&copy; 2014-2015, All Rights Reserved ~
@@ -95,13 +105,28 @@
 			return myReturn;
 		}
 
+			//use location object to access querystring (address bar)
+			const queryString = window.location.search;
+				
+			//output to console    
+			console.log(queryString);
+				
+			//separate querystring parameters
+			const urlParams = new URLSearchParams(queryString);
 
+			
 
 		let myDate = new Date();
 
 		let today = myDate.getDay();
+
 		let coffee ="";
 		
+		if(urlParams.has("day")){
+			today = urlParams.get("day");
+			today = parseInt(today);
+		}
+
 		//TEST ONLY
 		//today = 4;
 
@@ -123,7 +148,7 @@
 			coffee = {
 			pic: "bubble-tea.jpg",
 			alt: "A pic of bubble tea",
-			color: "purple",
+			color: "thistle",
 			description: `I love me some bubble tea!`,
 			coffee: "Bubble Tea",
 			weekday: "Monday"
@@ -135,7 +160,7 @@
 				coffee = {
 			pic: "caramel-latte.jpg",
 			alt: "Caramel Latte",
-			color: "gold",
+			color: "LemonChiffon",
 			description: `Caramel Lattes are classic!`,
 			coffee: "Caramel Latte",
 			weekday: "Tuesday"
@@ -148,7 +173,7 @@
 				coffee = {
 			pic: "pumpkin-spice-latte.jpg",
 			alt: "Pic of Pumpkin Spice Latte",
-			color: "orange",
+			color: "tan",
 			description: `Pumpkin Spice Lattes are awesome!`,
 			coffee: "Pumpkin Spice Latte",
 			weekday: "Wednesday"
@@ -184,7 +209,7 @@
 				coffee = {
 			pic: "frappaccino.jpg",
 			alt: "A pic of frappaccino",
-			color: "yellow",
+			color: "maroon",
 			description: `Frappaccino Time!`,
 			coffee: "Frappaccino",
 			weekday: "Saturday"
